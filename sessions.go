@@ -20,7 +20,7 @@
 package sessions
 
 import (
-	"github.com/go-martini/martini"
+	"github.com/Hellowor/martini"
 	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
 	"log"

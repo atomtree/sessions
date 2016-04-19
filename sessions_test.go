@@ -1,7 +1,7 @@
 package sessions
 
 import (
-	"github.com/go-martini/martini"
+	"github.com/Hellowor/martini"
 	"net/http"
 	"net/http/httptest"
 	"strings"
