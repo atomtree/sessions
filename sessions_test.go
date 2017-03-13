@@ -1,7 +1,7 @@
 package sessions
 
 import (
-	"github.com/Hellowor/martini"
+	"github.com/atomtree/martini"
 	"net/http"
 	"net/http/httptest"
 	"strings"
