@@ -20,11 +20,13 @@
 package sessions
 
 import (
+	"log"
+	"net/http"
+	"time"
+
 	"github.com/atomtree/martini"
 	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
-	"log"
-	"net/http"
 )
 
 const (
@@ -77,8 +79,11 @@ type Session interface {
 func Sessions(name string, store Store) martini.Handler {
 	return func(res http.ResponseWriter, r *http.Request, c martini.Context, l *log.Logger) {
 		// Map to the Session interface
+		start := time.Now()
 		s := &session{name, r, l, store, nil, false}
+
 		c.MapTo(s, (*Session)(nil))
+		log.Printf("martini-中间件-session-1 %s\n", time.Since(start).String())
 
 		// Use before hook to save out the session
 		rw := res.(martini.ResponseWriter)
@@ -87,6 +92,7 @@ func Sessions(name string, store Store) martini.Handler {
 				check(s.Session().Save(r, res), l)
 			}
 		})
+		log.Printf("martini-中间件-session-1 %s\n", time.Since(start).String())
 
 		// clear the context, we don't need to use
 		// gorilla context and we don't want memory leaks
