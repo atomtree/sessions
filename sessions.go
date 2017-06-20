@@ -92,7 +92,7 @@ func Sessions(name string, store Store) martini.Handler {
 				check(s.Session().Save(r, res), l)
 			}
 		})
-		log.Printf("martini-中间件-session-1 %s\n", time.Since(start).String())
+		log.Printf("martini-中间件-session-2 %s\n", time.Since(start).String())
 
 		// clear the context, we don't need to use
 		// gorilla context and we don't want memory leaks
